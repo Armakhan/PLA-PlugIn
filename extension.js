@@ -79,8 +79,7 @@ async function activate(context) {
       if (article == null) return;
 
       const articleContentResponse = await axios.get(
-        ` https://prompt-lib.azurewebsites.net/getArticlesByArticleId/1/` +
-          article.link,
+        ` https://prompt-lib.azurewebsites.net/getArticlesByArticleId/1/` + article.link + `?q=getapproved`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -90,7 +89,7 @@ async function activate(context) {
         }
       );
 
-      console.log(articleContentResponse.data.data[0]);
+      console.log(articleContentResponse.data.data);
 
       const articleContent = articleContentResponse.data.data[0]; // Assuming the content is in the 'content' field, change this as needed
       // Generate Markdown content
