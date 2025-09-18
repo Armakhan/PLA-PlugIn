@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' vscode-resource:; script-src 'unsafe-inline' vscode-resource:;">
+    <title>Prompt Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Component -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="header-title">
+                    <span class="header-icon">📚</span>
+                    Prompt Library
+                </h1>
+                <p class="header-subtitle">Discover and use AI prompts from our curated collection</p>
+            </div>
+        </header>
+
+        <!-- Search Component -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <div class="search-input-container">
+                    <span class="search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search prompts by title, category, or technology..."
+                        autocomplete="off"
+                    >
+                    <button id="clearSearch" class="clear-button" title="Clear search">✕</button>
+                </div>
+                <div class="filter-chips">
+                    <span class="filter-label">Quick filters:</span>
+                    <button class="chip" data-filter="all">All</button>
+                    <button class="chip" data-filter="javascript">JavaScript</button>
+                    <button class="chip" data-filter="python">Python</button>
+                    <button class="chip" data-filter="react">React</button>
+                    <button class="chip" data-filter="angular">Angular</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Component -->
+        <div id="loadingSpinner" class="loading-container">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading prompts...</p>
+        </div>
+
+        <!-- Error Component -->
+        <div id="errorContainer" class="error-container" style="display: none;">
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <p class="error-message" id="errorMessage"></p>
+                <button id="retryButton" class="retry-button">Retry</button>
+            </div>
+        </div>
+
+        <!-- Articles Grid Component -->
+        <main class="main-content">
+            <div class="results-header">
+                <span id="resultsCount" class="results-count">0 prompts found</span>
+                <div class="view-toggle">
+                    <button id="gridView" class="view-btn active" title="Grid view">⊞</button>
+                    <button id="listView" class="view-btn" title="List view">☰</button>
+                </div>
+            </div>
+            
+            <div id="articlesContainer" class="articles-grid">
+                <!-- Article cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State Component -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-content">
+                    <span class="empty-icon">📝</span>
+                    <h3 class="empty-title">No prompts found</h3>
+                    <p class="empty-description">Try adjusting your search terms or clearing filters</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Article Modal Component -->
+    <div id="articleModal" class="modal" style="display: none;">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <button id="closeModal" class="modal-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent" class="modal-article-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="openInEditor" class="btn btn-primary">Open in Editor</button>
+                <button id="copyContent" class="btn btn-secondary">Copy Content</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
